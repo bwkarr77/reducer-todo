@@ -10,7 +10,6 @@ const Form = props => {
   };
 
   const addTask = e => {
-    // alert("hello");
     e.preventDefault();
     console.log("addTask ran");
     const value = e.target[0].value;
@@ -20,13 +19,6 @@ const Form = props => {
         type: "addTask"
       });
     resetForm();
-
-    // const newTask = {
-    //   id: Date.parse(new Date()),
-    //   task: `task${Date.parse(new Date())}`,
-    //   completed: false
-    // };
-    // setTasks({ ...testTasks, newTask });
   };
   const handleChange = e => {
     console.log("handleChange ran");
@@ -40,20 +32,7 @@ const Form = props => {
   return (
     <div className="form-container">
       {/* <form className="form" onSubmit={e => addTask(e)}> */}
-      <form
-        className="form"
-        onSubmit={e => {
-          //   addTask(e);
-          e.preventDefault();
-          const value = e.target[0].value;
-          !!value &&
-            dispatch({
-              value: `${value}`,
-              type: "addTask"
-            });
-          resetForm();
-        }}
-      >
+      <form className="form" onSubmit={e => addTask(e)}>
         <input
           className="input-task"
           type="text"

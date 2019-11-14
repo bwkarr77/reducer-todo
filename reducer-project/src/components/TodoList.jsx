@@ -2,20 +2,40 @@ import React, { useReducer } from "react";
 
 import TodoItem from "./TodoItem";
 import { Reducer, initialList } from "../reducers/reducers";
-// import { TodoInitial, TodoNew } from "../data";
 import Form from "./Form";
 
 const TodoList = props => {
   const [state, dispatch] = useReducer(Reducer, initialList);
-  console.log(state);
-
   console.log(state.taskList);
+
+  const handleClear = e => {
+    console.log("clear complete clicked");
+    dispatch({
+      type: "clearList"
+    });
+  };
+  const handleToggle = e => {
+    dispatch({
+      type: "completeTask",
+      value: props.task.id
+    });
+  };
+
+  console.log("todoList: ", state.taskList);
   return (
     <div>
-      {state.taskList.map(each => (
-        <TodoItem task={each} />
+      {state.taskList.map((each, index) => (
+        <TodoItem
+          task={each}
+          key={each.id}
+          index={index}
+          // handleToggle={e => handleToggle(e)}
+        />
       ))}
       <Form state={state} dispatch={dispatch} />
+      <button className="list-clear" onClick={e => handleClear(e)}>
+        Clear Completed
+      </button>
     </div>
   );
 };
