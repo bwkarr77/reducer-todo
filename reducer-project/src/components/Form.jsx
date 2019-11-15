@@ -12,7 +12,6 @@ const Form = props => {
   const addTask = e => {
     e.preventDefault();
     const value = e.target[0].value;
-    console.log(!value);
     !!value &&
       dispatch({
         value: value,

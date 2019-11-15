@@ -15,6 +15,7 @@ const TodoList = props => {
     });
   };
   const handleToggler = taskEach => {
+    console.log("toggleTask", taskEach);
     const currentId = taskEach.id;
     console.log("toggleTask", currentId, state.taskList[currentId]);
     dispatch({
@@ -29,7 +30,7 @@ const TodoList = props => {
       {state.taskList.map((each, index) => {
         return (
           <div>
-            {console.log("task:", each)}
+            {/* {console.log("task:", each)} */}
             <TodoItem
               task={each}
               key={each.id}
