@@ -18,8 +18,8 @@ export const Reducer = (state, action) => {
     case "addTask":
       console.log("submit new");
       const newTask = {
-        id: Date.parse(new Date()),
         task: `${action.value}`,
+        id: Date.parse(new Date()),
         completed: false
       };
       const newList = [...state.taskList, newTask];
@@ -27,20 +27,20 @@ export const Reducer = (state, action) => {
         ...state,
         taskList: newList
       };
-    case "completeTask":
-      // console.log(state.taskList[0].completed);
+    case "toggleTask":
       const updatedStatus = state.taskList.map(e =>
         e.id === action.value ? { ...e, completed: !e.completed } : e
       );
+      // console.log(updatedStatus, state);
       return {
         ...state,
         taskList: updatedStatus
       };
-    case "removeTask":
-      console.log("remove task here");
-      break;
+    // case "removeTask":
+    //   console.log("remove task here");
+    //   break;
     case "clearList":
-      console.log("clear list");
+      console.log(state.taskList);
       const completeList = state.taskList.filter(e => !e.completed);
       return { ...state, taskList: completeList };
     default:

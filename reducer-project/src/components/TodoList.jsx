@@ -6,32 +6,39 @@ import Form from "./Form";
 
 const TodoList = props => {
   const [state, dispatch] = useReducer(Reducer, initialList);
-  console.log(state.taskList);
 
   const handleClear = e => {
-    console.log("clear complete clicked");
+    e.preventDefault();
     dispatch({
-      type: "clearList"
+      type: "clearList",
+      value: state
     });
   };
-  const handleToggle = e => {
+  const handleToggler = taskEach => {
+    const currentId = taskEach.id;
+    console.log("toggleTask", currentId, state.taskList[currentId]);
     dispatch({
-      type: "completeTask",
-      value: props.task.id
+      type: "toggleTask",
+      value: currentId
     });
   };
 
   console.log("todoList: ", state.taskList);
   return (
     <div>
-      {state.taskList.map((each, index) => (
-        <TodoItem
-          task={each}
-          key={each.id}
-          index={index}
-          // handleToggle={e => handleToggle(e)}
-        />
-      ))}
+      {state.taskList.map((each, index) => {
+        return (
+          <div>
+            {console.log("task:", each)}
+            <TodoItem
+              task={each}
+              key={each.id}
+              index={index}
+              handleToggler={handleToggler}
+            />
+          </div>
+        );
+      })}
       <Form state={state} dispatch={dispatch} />
       <button className="list-clear" onClick={e => handleClear(e)}>
         Clear Completed

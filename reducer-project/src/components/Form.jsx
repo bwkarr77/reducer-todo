@@ -11,8 +11,8 @@ const Form = props => {
 
   const addTask = e => {
     e.preventDefault();
-    console.log("addTask ran");
     const value = e.target[0].value;
+    console.log(!value);
     !!value &&
       dispatch({
         value: value,
@@ -21,14 +21,13 @@ const Form = props => {
     resetForm();
   };
   const handleChange = e => {
-    console.log("handleChange ran");
     dispatch({
       type: "inputInfo",
       value: e.target.value
     });
   };
 
-  console.log(state.taskList);
+  // console.log(state.taskList);
   return (
     <div className="form-container">
       {/* <form className="form" onSubmit={e => addTask(e)}> */}
