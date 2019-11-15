@@ -15,9 +15,7 @@ const TodoList = props => {
     });
   };
   const handleToggler = taskEach => {
-    console.log("toggleTask", taskEach);
     const currentId = taskEach.id;
-    console.log("toggleTask", currentId, state.taskList[currentId]);
     dispatch({
       type: "toggleTask",
       value: currentId
@@ -27,19 +25,14 @@ const TodoList = props => {
   console.log("todoList: ", state.taskList);
   return (
     <div>
-      {state.taskList.map((each, index) => {
-        return (
-          <div>
-            {/* {console.log("task:", each)} */}
-            <TodoItem
-              task={each}
-              key={each.id}
-              index={index}
-              handleToggler={handleToggler}
-            />
-          </div>
-        );
-      })}
+      {state.taskList.map((each, index) => (
+        <TodoItem
+          task={each}
+          key={each.id}
+          index={index}
+          handleToggler={handleToggler}
+        />
+      ))}
       <Form state={state} dispatch={dispatch} />
       <button className="list-clear" onClick={e => handleClear(e)}>
         Clear Completed

@@ -31,16 +31,11 @@ export const Reducer = (state, action) => {
       const updatedStatus = state.taskList.map(e =>
         e.id === action.value ? { ...e, completed: !e.completed } : e
       );
-      // console.log(updatedStatus, state);
       return {
         ...state,
         taskList: updatedStatus
       };
-    // case "removeTask":
-    //   console.log("remove task here");
-    //   break;
     case "clearList":
-      console.log(state.taskList);
       const completeList = state.taskList.filter(e => !e.completed);
       return { ...state, taskList: completeList };
     default:

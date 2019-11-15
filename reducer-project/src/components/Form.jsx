@@ -26,10 +26,8 @@ const Form = props => {
     });
   };
 
-  // console.log(state.taskList);
   return (
     <div className="form-container">
-      {/* <form className="form" onSubmit={e => addTask(e)}> */}
       <form className="form" onSubmit={e => addTask(e)}>
         <input
           className="input-task"
