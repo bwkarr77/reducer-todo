@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+
+.todo-item {
+  margin: 10px;
+  font-size: 3rem;
+  background-image: linear-gradient(150deg, lightblue, darkblue);
+  border-radius: 20px;
+  box-shadow: black 5px 6px 10px 2px;
+  height: 80px;
+  color: rgb(130, 0, 206);
+  text-transform: capitalize;
+}
