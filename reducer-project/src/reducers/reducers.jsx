@@ -1,5 +1,3 @@
-import React, { useReducer } from "react";
-
 export const initialList = {
   taskItem: "",
   taskList: [

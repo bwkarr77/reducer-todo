@@ -3,8 +3,9 @@ import React, { useReducer } from "react";
 import TodoItem from "./TodoItem";
 import { Reducer, initialList } from "../reducers/reducers";
 import Form from "./Form";
+import { ListContext } from "../contexts/ListContext";
 
-const TodoList = props => {
+const TodoList = () => {
   const [state, dispatch] = useReducer(Reducer, initialList);
 
   const handleClear = e => {
@@ -24,20 +25,17 @@ const TodoList = props => {
 
   console.log("todoList: ", state.taskList);
   return (
-    <div>
-      {state.taskList.map((each, index) => (
-        <TodoItem
-          task={each}
-          key={each.id}
-          index={index}
-          handleToggler={handleToggler}
-        />
-      ))}
-      <Form state={state} dispatch={dispatch} />
-      <button className="list-clear" onClick={e => handleClear(e)}>
-        Clear Completed
-      </button>
-    </div>
+    <ListContext.Provider value={{ state, handleToggler, dispatch }}>
+      <div>
+        {state.taskList.map((each, index) => (
+          <TodoItem key={each.id} index={index} />
+        ))}
+        <Form />
+        <button className="list-clear" onClick={e => handleClear(e)}>
+          Clear Completed
+        </button>
+      </div>
+    </ListContext.Provider>
   );
 };
 

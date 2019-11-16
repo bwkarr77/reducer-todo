@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 
-const Form = props => {
-  const { state, dispatch } = props;
+import { ListContext } from "../contexts/ListContext";
+
+const Form = () => {
+  const { state, dispatch } = useContext(ListContext);
   const resetForm = () => {
     dispatch({
       type: "inputInfo",

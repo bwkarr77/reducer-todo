@@ -1,15 +1,17 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
 
-import { Reducer, initialList } from "../reducers/reducers";
+import { ListContext } from "../contexts/ListContext";
 
 const TodoItem = props => {
+  const { state, handleToggler } = useContext(ListContext);
+  const currentItem = state.taskList[props.index];
   return (
     <div
       className="todo-item"
-      style={props.task.completed ? { textDecoration: "line-through" } : null}
-      onClick={e => props.handleToggler(props.task)}
+      style={currentItem.completed ? { textDecoration: "line-through" } : null}
+      onClick={e => handleToggler(currentItem)}
     >
-      {props.task.task}
+      {currentItem.task}
     </div>
   );
 };
