@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -16,9 +12,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #09d3ac;
+.App-header p {
+  color: lightslategrey;
+  margin-top: 0;
 }
 
 .todo-item {
@@ -30,4 +26,5 @@
   height: 80px;
   color: rgb(130, 0, 206);
   text-transform: capitalize;
+  padding: 3px 15px;
 }

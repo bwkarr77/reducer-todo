@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Todo List - Reducer Project:</h1>
+        <p>click on todo items to mark as completed</p>
         <TodoList />
       </header>
     </div>
